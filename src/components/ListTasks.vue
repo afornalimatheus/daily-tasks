@@ -3,7 +3,7 @@
     <div class="pb-6">
       <h1 class="text-xl font-medium">Lista de tarefas</h1>
     </div>
-    <p v-if="!tasks || tasks.length === 0">Não tem tarefas</p>
+    <p v-if="!tasks || tasks.length === 0">Você ainda não tem tarefas para hoje...</p>
       <ul v-else>
         <li v-for="task in tasks" :key="task.id">
           <input class="checkbox checkbox-primary mr-2" type="checkbox" />
@@ -27,5 +27,9 @@ defineProps({
 <style scoped>
   h1, span {
     color: white;
+  }
+
+  p {
+    color: var(--color-base-300);
   }
 </style>

@@ -1,13 +1,17 @@
 <template>
   <div class="flex justify-between align-center bg-neutral p-6 mb-5 rounded-lg shadow-2xl">
-    <input type="text" class="input input-primary" v-model="taskDescription" placeholder="Descrição da tarefa" />
-    <button class="btn btn-primary" @click="createTask">Criar</button>
+    <input type="text" class="input input-primary mr-2" v-model="taskDescription" placeholder="Descrição da tarefa..." />
+    <button class="btn btn-primary" @click="createTask">
+      <PhPlus color="#006724" weight="bold" />
+      Criar
+    </button>
   </div>
 </template>
 
 <script setup lang="ts">
 import { defineEmits, ref } from 'vue'
 import type { Task } from '../types/Task'
+import { PhPlus } from '@phosphor-icons/vue'
 
 const emit = defineEmits(['taskCreated'])
 
@@ -21,6 +25,7 @@ function createTask() {
   }
 
   emit('taskCreated', newTask)
+  taskDescription.value = ''
 }
 </script>
 
