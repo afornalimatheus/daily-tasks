@@ -4,12 +4,12 @@
       <h1 class="text-xl font-medium">Lista de tarefas</h1>
     </div>
     <p v-if="!tasks || tasks.length === 0">Você ainda não tem tarefas para hoje...</p>
-      <ul v-else>
-        <li v-for="task in tasks" :key="task.id">
-          <input class="checkbox checkbox-primary mr-2" type="checkbox" />
-          <span>{{ task.description }}</span>
-        </li>
-      </ul>
+    <ul v-else>
+      <li v-for="task in tasks" :key="task.id">
+        <input class="checkbox checkbox-primary mr-2" @click="markTaskDone(task.id)" type="checkbox" />
+        <span>{{ task.description }}</span>
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -21,6 +21,10 @@ import type { Task } from '../types/Task'
 defineProps({
   tasks: Array as PropType<Task[]>
 })
+
+function markTaskDone(idTask: number) {
+  
+}
 
 </script>
 
