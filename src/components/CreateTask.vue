@@ -9,25 +9,22 @@
 </template>
 
 <script setup lang="ts">
-import { defineEmits, ref } from 'vue'
+import { ref } from 'vue'
 import axios from 'axios'
 import type { Task } from '../types/Task'
 import { PhPlus } from '@phosphor-icons/vue'
-
-const emit = defineEmits(['taskCreated'])
 
 const taskDescription = ref()
 
 const createTask = async () => {
   const newTask: Task = {
-    "id": Date.now(),
+    "id": String(Date.now()),
     "description": taskDescription.value,
     "done": false
   }
 
   try {
     await axios.post("http://localhost:3000/tasks", newTask);
-    emit("taskCreated", newTask);
     taskDescription.value = "";
   } catch (error) {
     console.error("Error on create task: ", error);

@@ -30,11 +30,6 @@ onMounted(() => {
       console.error("Erro: ", error)
     })
 })
-
-function updateListTasks(newTask: Task) {
-  console.log('NOVA TAREFAS ', newTask);
-  tasks.value.push(newTask)
-}
 </script>
 
 <style scoped>
